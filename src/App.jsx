@@ -1,10 +1,21 @@
-import { Typography } from "@mui/material";
+import { useEffect } from "react";
 import Theme from "./theme/Theme";
+import useSound from "./hooks/useSound";
+import { Button } from "@mui/material";
+import GameProvider from "./context/GameProvider";
+import KeyBoard from "./components/KeyBoard";
+import GuessBoard from "./components/GuessBoard";
 
 const App = () => {
+  const { playSound } = useSound();
+
   return (
     <Theme>
-      <Typography>Base pour create project</Typography>
+      <GameProvider>
+        <Button onClick={() => playSound("LR", 1000)}>Play</Button>
+        <GuessBoard />
+        <KeyBoard />
+      </GameProvider>
     </Theme>
   );
 };
